@@ -1,4 +1,4 @@
 # Chatbot
-A chat bot I will make
+A chat bot
 
-for when I am bored in school :)
+I got board lol
