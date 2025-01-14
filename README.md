@@ -1,4 +1,4 @@
 # Chatbot
 A chat bot
 
-I got board lol
+I got bored lol
