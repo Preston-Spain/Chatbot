@@ -4,18 +4,20 @@ import java.util.HashMap;
 
 public class Network{
 
-    HashMap<int, double> fB   = new HashMap<int, double>();
-    HashMap<int, double> iB   = new HashMap<int, double>();
-    HashMap<int, double> oB   = new HashMap<int, double>();
-    HashMap<int, double> cB   = new HashMap<int, double>();
-    HashMap<int, double> fWx  = new HashMap<int, double>();
-    HashMap<int, double> iWx  = new HashMap<int, double>();
-    HashMap<int, double> oWx  = new HashMap<int, double>();
-    HashMap<int, double> cWx  = new HashMap<int, double>();
-    HashMap<int, double> fWlh = new HashMap<int, double>();
-    HashMap<int, double> iWlh = new HashMap<int, double>();
-    HashMap<int, double> oWlh = new HashMap<int, double>();
-    HashMap<int, double> cWlh = new HashMap<int, double>();
+    //
+        HashMap<int, double> fB   = new HashMap<int, double>();
+        HashMap<int, double> iB   = new HashMap<int, double>();
+        HashMap<int, double> oB   = new HashMap<int, double>();
+        HashMap<int, double> cB   = new HashMap<int, double>();
+        HashMap<int, double> fWx  = new HashMap<int, double>();
+        HashMap<int, double> iWx  = new HashMap<int, double>();
+        HashMap<int, double> oWx  = new HashMap<int, double>();
+        HashMap<int, double> cWx  = new HashMap<int, double>();
+        HashMap<int, double> fWlh = new HashMap<int, double>();
+        HashMap<int, double> iWlh = new HashMap<int, double>();
+        HashMap<int, double> oWlh = new HashMap<int, double>();
+        HashMap<int, double> cWlh = new HashMap<int, double>();
+    //
 
     public static double GetIDVar(int ID, String Class) {
         double Ans = 0.0;
@@ -87,6 +89,18 @@ public class Network{
                 }
             break;
             case "cWlh":
+                for (int i : cWlh.keySet()) {
+                    Ans = cWlh.get(i);
+                    break;
+                }
+            break;
+            case "Ct":
+                for (int i : cWlh.keySet()) {
+                    Ans = cWlh.get(i);
+                    break;
+                }
+            break;
+            case "Ht":
                 for (int i : cWlh.keySet()) {
                     Ans = cWlh.get(i);
                     break;
@@ -197,5 +211,14 @@ public class Network{
         double Ct = (f * lCt) + (i * pc);
         double Ht = o * tanh(Ct);
         return [Ct, Ht];
+    }
+
+    // My Goofy ahh Runner thingy, I will use a standard one later.
+    public static double[][] RunBatch(double Input, double[] IDs_used) {
+        double[][] Holder = new double[IDs_used.length][2];
+        for (int i = 0; i > IDs_used.length; i++) {
+            Holder[i] = LSTM(IDs_used[i], Input, GetIDVar(IDs_used[i], "Ct"), GetIDVar(IDs_used[i], "Ht"));
+        }
+        return Holder;
     }
 }
