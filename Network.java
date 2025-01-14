@@ -27,7 +27,8 @@ public class Network{
 
         double c = tanh  ((GetIDVar(ID, "cWx") * Xt) + (GetIDVar(ID, "cWlh") * lHt) + GetIDVar(ID, "cB"));
 
-        double C = (f * lCt) + (i * pc);
-        return [1,1,1];
+        double Ct = (f * lCt) + (i * pc);
+        double Ht = o * tanh(Ct);
+        return [Ct,Ht];
     }
 }
